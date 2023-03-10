@@ -44,3 +44,35 @@ function waitForMs(ms) {
 }
 
 carousel(carouselText);
+
+// dark nav bar
+const header = document.querySelector('.navbar');
+let mybutton = document.getElementById("myBtn");
+
+window.onscroll = function () {
+    var top = window.scrollY;
+    if (top >= 300) {
+        header.classList.add('navbarDark');
+    }
+    else {
+        header.classList.remove('navbarDark');
+    }
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+
+
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+const navLinks = document.querySelectorAll('.nav-item')
+const menuToggle = document.getElementById('navbarSupportedContent')
+
+navLinks.forEach((l) => {
+    l.addEventListener('click', () => { new bootstrap.Collapse(menuToggle).toggle() })
+})
